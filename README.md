@@ -74,16 +74,15 @@ Quando a documentação não responder, o assistente deverá reconhecer essa lim
 Ainda não são resultados de teste. Nos dias 7/8, localizar evidências, definir gabarito
 por arquivo/página e medir a recuperação antes de avaliar respostas geradas.
 
-## Equipe e contrato (preencher com o trio)
+## Equipe e contrato 
 
-| Participante | GitHub | Piloto |
+| Participante | GitHub | Dia Piloto |
 | --- | --- | --- |
-| Nicolas Cussioli | NicolasCussioli | A definir |
-| A definir | A definir | A definir |
-| A definir | A definir | A definir |
+| Nicolas Cussioli | NicolasCussioli | Dia 07 |
+| Luca Callegari | Callegari152 | Dia 08 |
+| Manuel Flores | ManuelDF97 | Dia 09 |
 
-- Repositório colaborativo: https://github.com/NicolasCussioli/askdata-airflow-docker
-- Comunicação: a definir.
+- Repositório colaborativo: https://github.com/NicolasCussioli/grupo-de-estudos-ia-pucrs
 - Rotação: um piloto por dia (7/8/9), outros dois acompanham e revisam.
 - Proposta para impasses: discutir/pesquisar por 10 minutos e então chamar monitor.
 - Trio parceiro e feedback do pitch: pendentes.
