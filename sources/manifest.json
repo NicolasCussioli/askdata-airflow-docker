@@ -1,0 +1,50 @@
+[
+  {
+    "file": "01-airflow-docker.pdf",
+    "title": "Running Airflow in Docker",
+    "version": "Apache Airflow 3.3.2",
+    "url": "https://airflow.apache.org/docs/apache-airflow/3.3.2/howto/docker-compose/index.html",
+    "retrieved_at": "2026-09-21T16:15:40.129008+00:00",
+    "pages": 7,
+    "sha256": "184aeea64654b0e27bf5546d25e483e66d7900be17e81c429178130f771dec82",
+    "source_sha256": "4256a3bb70f360c88d9c635ee6207bcbea0c38f46da74c6cf6fa4fb1046383cf",
+    "license": "Apache-2.0",
+    "local_export": true
+  },
+  {
+    "file": "02-airflow-dags.pdf",
+    "title": "Dags",
+    "version": "Apache Airflow 3.3.2",
+    "url": "https://airflow.apache.org/docs/apache-airflow/3.3.2/core-concepts/dags.html",
+    "retrieved_at": "2026-09-21T16:15:40.651912+00:00",
+    "pages": 16,
+    "sha256": "5c2bc35f324fbec68d183fbe81d0ea841acb2ea93db2e9ec3f26b0840790564f",
+    "source_sha256": "8474cde37671fa8ad0583e02a7d7cdbcd90243845966fb744ba1b8fd88e3c226",
+    "license": "Apache-2.0",
+    "local_export": true
+  },
+  {
+    "file": "03-airflow-tasks.pdf",
+    "title": "Tasks",
+    "version": "Apache Airflow 3.3.2",
+    "url": "https://airflow.apache.org/docs/apache-airflow/3.3.2/core-concepts/tasks.html",
+    "retrieved_at": "2026-09-21T16:15:41.092935+00:00",
+    "pages": 7,
+    "sha256": "d2626f0208be47516e03f794c742f2bacf393d9c0f4885d42cf79a0bc42ef469",
+    "source_sha256": "fb2563c399db53175a1ff1479896ecdde2b0a83851fede8a23a00c4a8e0876d4",
+    "license": "Apache-2.0",
+    "local_export": true
+  },
+  {
+    "file": "04-docker-compose.pdf",
+    "title": "Docker Compose Quickstart",
+    "version": "Docker Docs - snapshot",
+    "url": "https://docs.docker.com/compose/gettingstarted/",
+    "retrieved_at": "2026-09-21T16:15:41.647560+00:00",
+    "pages": 8,
+    "sha256": "05d43e27c7b62a6ea584e2f23dc99442caa88259a1ffce0407a6a3b650e606a2",
+    "source_sha256": "e2170c8d7ccbfb31c308af56bc8cc9d5050b75ea599fa32d4ea3b937fc5a782c",
+    "license": "Apache-2.0",
+    "local_export": true
+  }
+]

@@ -1,0 +1,4 @@
+# Preservar bytes dos PDFs e snapshots, inclusive no checkout Windows.
+data/*.pdf binary
+sources/*.html -text -whitespace
+sources/*.txt -text -whitespace

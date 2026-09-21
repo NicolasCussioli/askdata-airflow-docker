@@ -1,0 +1,4 @@
+-r ../requirements.txt
+requests==2.34.2
+reportlab==5.0.1
+beautifulsoup4==4.15.0
