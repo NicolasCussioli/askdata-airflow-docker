@@ -113,13 +113,13 @@ foram gerados na etapa de ingestão anterior. Qualidade da busca ainda será ava
 
 ## Execução no notebook do trio
 
-Esta preparação está na branch `codex/dia-7-ingestao`. Quem já tem o clone deve
+Esta preparação está na branch `dia-7-ingestao`. Quem já tem o clone deve
 conferir `git status` antes de atualizar, preservar alterações locais e executar
-`git fetch origin` seguido de `git switch codex/dia-7-ingestao`.
+`git fetch origin` seguido de `git switch dia-7-ingestao`.
 Quem ainda não tem pode clonar diretamente a branch:
 
 ```powershell
-git clone --branch codex/dia-7-ingestao https://github.com/NicolasCussioli/askdata-airflow-docker.git
+git clone --branch dia-7-ingestao https://github.com/NicolasCussioli/askdata-airflow-docker.git
 cd askdata-airflow-docker
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
