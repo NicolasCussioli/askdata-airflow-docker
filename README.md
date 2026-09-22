@@ -3,8 +3,11 @@
 Assistente de estudo para encontrar respostas sobre DAGs, tarefas e execução local
 de pipelines com Docker Compose, citando o documento e a página de cada evidência.
 
-**Estado:** kickoff do dia 6. O corpus e o smoke test estão prontos; ingestão,
-respostas e interface serão implementadas nos dias 7, 8 e 9.
+**Estado:** Dia 7 implementado e validado: quatro PDFs, 38 páginas e 168 chunks
+(700/100), com embeddings reais do Gemini salvos e auditados no Chroma local.
+Oito testes offline aprovados. Respostas e interface ficam para os dias 8 e 9.
+
+**Para acompanhar a aula pelo celular:** [roteiro do Dia 7](docs/dia-07.md).
 
 ## Corpus
 
@@ -33,7 +36,7 @@ sem reconstruir o banco. Arquivos de licença e NOTICE acompanham os documentos.
 ```powershell
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-Copy-Item .env.example .env
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 # Preencha GEMINI_API_KEY na sua .env, sem enviar a chave para o Git.
 .\.venv\Scripts\python.exe check_setup.py
 ```
@@ -93,7 +96,8 @@ por arquivo/página e medir a recuperação antes de avaliar respostas geradas.
 
 `Pergunta -> embedding -> trechos top-k -> prompt com evidências -> resposta citada`
 
-Os módulos em `src/` são marcadores explícitos das próximas aulas, não implementações.
+`src/ingestion.py` implementa o Dia 7. `src/rag_engine.py` e `src/app.py`
+continuam como marcadores dos dias 8 e 9.
 Para recriar o corpus, instale `tools/requirements.txt` e execute
 `python tools/coletar_documentos.py`. Isso acessa a rede e pode alterar os snapshots.
 
@@ -125,4 +129,39 @@ git clone https://github.com/NicolasCussioli/askdata-airflow-docker.git
 cd askdata-airflow-docker
 ```
 
-Depois siga o setup acima. Os convites dos demais participantes ainda serão enviados.
+Depois siga o setup acima. Os convites de escrita a `Callegari152` e `ManuelDF97`
+foram enviados; a aceitação ainda não foi verificada.
+
+## Dia 7: executar e auditar
+
+Na raiz do repositório, sem precisar ativar a venv:
+
+```powershell
+# Offline: não usa chave nem gera embeddings reais.
+.\.venv\Scripts\python.exe test_chroma_setup.py
+.\.venv\Scripts\python.exe src/ingestion.py --dry-run
+.\.venv\Scripts\python.exe inspecionar_chunks.py --preview
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+
+# Com GEMINI_API_KEY preenchida apenas na .env local:
+.\.venv\Scripts\python.exe src/ingestion.py
+.\.venv\Scripts\python.exe inspecionar_chunks.py
+```
+
+A coleção `askdata_knowledge` usa `gemini-embedding-001`, 3072 dimensões,
+`RETRIEVAL_DOCUMENT` e distância de cosseno. No Dia 8, a pergunta deve usar o
+mesmo modelo e dimensão, com `RETRIEVAL_QUERY` e `query_embeddings` explícito.
+O Chroma não gera embeddings automaticamente nesta implementação.
+
+Lotes já salvos são reaproveitados na reexecução. Mudanças no corpus ou nos
+parâmetros exigem uma nova coleção (`--collection askdata_v2` na ingestão e na
+auditoria), preservando a anterior. Experimentos com outros tamanhos devem passar
+os mesmos `--chunk-size` e `--chunk-overlap` para os dois scripts.
+
+O teste do Chroma usa vetores artificiais em `chroma_db/_smoke_test/` e os testes
+automatizados usam `.venv/test_chroma/`; ambos ficam fora do índice real e do Git.
+O [relatório offline](docs/dia-07-auditoria-offline.json) descreve a extração,
+não comprova chamadas à API ou qualidade semântica da busca.
+O [relatório do Chroma](docs/dia-07-auditoria-chroma.json) registra a integridade
+dos 168 chunks após a ingestão real. A reexecução encontrou zero pendências.
+O banco é local: cada colega precisa gerar seu índice na própria máquina.

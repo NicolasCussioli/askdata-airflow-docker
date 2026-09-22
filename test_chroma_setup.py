@@ -1,25 +1,29 @@
-import chromadb
+"""Teste offline de persistência e distância de cosseno; não usa Gemini."""
+from src.ingestion import ROOT, cliente_chroma
 
-# 1. Configurar o cliente persistente (cria ou usa a pasta ./chroma_db)
-client = chromadb.PersistentClient(path="./chroma_db")
 
-# 2. Criar ou obter a colecao configurada com distancia de cosseno
-collection = client.get_or_create_collection(
-    name="teste_configuracao",
-    metadata={"hnsw:space": "cosine"}
-)
+def main():
+    # Banco separado: vetores artificiais jamais entram no índice de documentos.
+    client = cliente_chroma(ROOT / 'chroma_db' / '_smoke_test')
+    collection = client.get_or_create_collection(
+        'teste_configuracao', embedding_function=None,
+        configuration={'hnsw': {'space': 'cosine'}},
+    )
+    collection.upsert(
+        ids=['doc_1', 'doc_2'], documents=['Exemplo Airflow', 'Exemplo Docker'],
+        embeddings=[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]],
+        metadatas=[{'arquivo': 'exemplo_a.pdf', 'pagina': 1},
+                   {'arquivo': 'exemplo_b.pdf', 'pagina': 2}],
+    )
+    reaberta = cliente_chroma(ROOT / 'chroma_db' / '_smoke_test').get_collection(
+        'teste_configuracao', embedding_function=None)
+    assert reaberta.count() == 2, 'A contagem deve permanecer em 2 ao repetir o teste.'
+    resultado = reaberta.query(query_embeddings=[[1.0, 0.0, 0.0]], n_results=2)
+    assert resultado['ids'][0] == ['doc_1', 'doc_2']
+    assert abs(resultado['distances'][0][0]) < 1e-6
+    assert abs(resultado['distances'][0][1] - 1) < 1e-6
+    print('APROVADO: Chroma local, upsert, reabertura e cosseno. Vetores artificiais; sem API.')
 
-# 3. Teste de insercao direta (sem chamada de API externa)
-collection.upsert(
-    ids=["doc_1", "doc_2"],
-    documents=["Documentacao oficial sobre engenharia de software.", "Manual de boas praticas da DataLakers."],
-    embeddings=[[0.1] * 768, [0.9] * 768], # Vetores de teste
-    metadatas=[{"arquivo": "manual.pdf", "pagina": 1}, {"arquivo": "doc.pdf", "pagina": 5}]
-)
 
-# 4. Inspecionar o banco vetorial
-print("=" * 50)
-print(f"Total de documentos na colecao: {collection.count()}")
-print("Amostra dos metadados:", collection.peek()["metadatas"])
-print("=" * 50)
-print("ChromaDB configurado e persistindo localmente com sucesso!")
+if __name__ == '__main__':
+    main()
