@@ -3,11 +3,14 @@
 Assistente de estudo para encontrar respostas sobre DAGs, tarefas e execução local
 de pipelines com Docker Compose, citando o documento e a página de cada evidência.
 
-**Estado:** Dia 7 implementado e validado: quatro PDFs, 38 páginas e 168 chunks
-(700/100), com embeddings reais do Gemini salvos e auditados no Chroma local.
-Oito testes offline aprovados. Respostas e interface ficam para os dias 8 e 9.
+**Estado:** Dias 7 e 8 implementados em código. Quatro PDFs, 38 páginas e 168
+chunks (700/100), com embeddings reais do Gemini salvos e auditados no Chroma
+local. O Dia 8 recupera trechos e gera respostas citadas; a avaliação inicial
+de recuperação encontrou páginas esperadas em 4/4 perguntas com gabarito.
+Respostas ainda requerem revisão humana; a interface fica para o Dia 9.
 
 **Para acompanhar a aula pelo celular:** [roteiro do Dia 7](docs/dia-07.md).
+Para a etapa seguinte: [roteiro do Dia 8](docs/dia-08.md).
 
 ## Corpus
 
@@ -96,8 +99,8 @@ por arquivo/página e medir a recuperação antes de avaliar respostas geradas.
 
 `Pergunta -> embedding -> trechos top-k -> prompt com evidências -> resposta citada`
 
-`src/ingestion.py` implementa o Dia 7. `src/rag_engine.py` e `src/app.py`
-continuam como marcadores dos dias 8 e 9.
+`src/ingestion.py` implementa o Dia 7 e `src/rag_engine.py` o Dia 8.
+`src/app.py` continua como marcador do Dia 9.
 Para recriar o corpus, instale `tools/requirements.txt` e execute
 `python tools/coletar_documentos.py`. Isso acessa a rede e pode alterar os snapshots.
 
@@ -165,3 +168,15 @@ não comprova chamadas à API ou qualidade semântica da busca.
 O [relatório do Chroma](docs/dia-07-auditoria-chroma.json) registra a integridade
 dos 168 chunks após a ingestão real. A reexecução encontrou zero pendências.
 O banco é local: cada colega precisa gerar seu índice na própria máquina.
+
+## Dia 8: buscar e responder
+
+```powershell
+.\.venv\Scripts\python.exe src/rag_engine.py --pergunta 'Onde colocar os arquivos de DAG no ambiente Docker do Airflow?' --somente-busca
+.\.venv\Scripts\python.exe src/rag_engine.py --pergunta 'Onde colocar os arquivos de DAG no ambiente Docker do Airflow?'
+.\.venv\Scripts\python.exe avaliar_rag.py --report docs/dia-08-recuperacao.json
+```
+
+O [guia do Dia 8](docs/dia-08.md) explica `top_k`, as citações `[F1]`,
+os testes fora do escopo e o que ainda precisa de julgamento humano. O relatório
+de recuperação mede apenas se uma página esperada apareceu entre os resultados.
