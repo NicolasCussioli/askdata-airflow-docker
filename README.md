@@ -3,7 +3,7 @@
 Assistente de estudo para encontrar respostas sobre DAGs, tarefas e execução local
 de pipelines com Docker Compose, citando o documento e a página de cada evidência.
 
-**Estado:** Dias 7 e 8 implementados em código. Quatro PDFs, 38 páginas e 168
+**Estado:** Dias 7 e 8 implementados em código. Onze PDFs, 84 páginas e 292
 chunks (700/100), com embeddings reais do Gemini salvos e auditados no Chroma
 local. O Dia 8 recupera trechos e gera respostas citadas; a avaliação inicial
 de recuperação encontrou páginas esperadas em 4/4 perguntas com gabarito.
@@ -20,8 +20,15 @@ Para a etapa seguinte: [roteiro do Dia 8](docs/dia-08.md).
 | 02-airflow-dags.pdf | Definição, dependências e organização de DAGs | 16 |
 | 03-airflow-tasks.pdf | Ciclo de vida, estados e problemas de tarefas | 7 |
 | 04-docker-compose.pdf | Serviços, health checks, volumes e logs | 8 |
+| 05-airflow.pdf | O que é o airflow | 13 |
+| 06-airflow-anthropic.pdf | Serviço de integração com anthropic | 4 |
+| 07-airflow-github.pdf | Serviço de integração com github | 3 |
+| 08-airflow-google.pdf | Serviço de integração com google | 10 |
+| 09-airflow-mongo.pdf | Serviço de integração com mongo | 3 |
+| 10-airflow-oracle.pdf | Serviço de integração com oracle | 4 |
+| 11-docker.pdf | O que é o docker | 9 |
 
-Total: **38 páginas**. Fontes em inglês; perguntas e futuras respostas em português.
+Total: **84 páginas**. Fontes em inglês; perguntas e futuras respostas em português.
 Os PDFs são exportações locais de páginas oficiais, **não PDFs oficiais distribuídos
 pelos projetos**. Texto preservado, layout modificado, imagens omitidas e código longo
 quebrado para impressão. Para copiar comandos, consulte o HTML/origem.
