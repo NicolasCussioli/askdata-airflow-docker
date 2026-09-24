@@ -48,7 +48,31 @@ with st.sidebar:
     data=historico_json,
     file_name="historico_chat.json",
     mime="application/json"
-)
+    )
+    #Perguntas frequentes
+    st.sidebar.markdown("### Perguntas Frequentes")
+    perguntas_exemplo = [
+        "O que é airflow?",
+        "O que é docker?",
+        "Airflow é integrado com quais tecnologias?"
+    ]
+    for p in perguntas_exemplo:
+        if st.sidebar.button(p, key=f"btn_{p}"):
+            st.session_state.messages.append({"role": "user", "content": p, "fontes": []})
+            try:
+                resultado = engine.responder_pergunta(p, top_k=top_k)
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": resultado["resposta"],
+                    "fontes": resultado["fontes"]
+                })
+            except Exception as err:
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": f"Erro ao processar a pergunta: {err}",
+                    "fontes": []
+            })
+            st.rerun()
 
 # --- AREA PRINCIPAL ---
 st.title("AskData: Assistente de Documentacao Tecnica")
