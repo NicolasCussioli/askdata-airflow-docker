@@ -2,12 +2,17 @@ import streamlit as st
 import os
 import time
 from rag_engine import RAGEngine
+import json
 
 # Configuracao da pagina
 st.set_page_config(
     page_title="AskData - Base de Conhecimento Inteligente",
     layout="wide"
 )
+
+#Inicializar historico inicial
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 # Inicializar o motor RAG em cache para evitar recriacao desnecessaria
 @st.cache_resource
@@ -35,6 +40,15 @@ with st.sidebar:
     if st.button("Limpar Historico de Chat"):
         st.session_state.messages = []
         st.rerun()
+
+    # Baixar Histórico
+    historico_json = json.dumps(st.session_state.messages, indent=2, ensure_ascii=False)
+    st.sidebar.download_button(
+    label="Exportar Historico (JSON)",
+    data=historico_json,
+    file_name="historico_chat.json",
+    mime="application/json"
+)
 
 # --- AREA PRINCIPAL ---
 st.title("AskData: Assistente de Documentacao Tecnica")
