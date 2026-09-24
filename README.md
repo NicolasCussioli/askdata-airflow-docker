@@ -64,8 +64,9 @@ Cada participante configura sua própria chave na `.env` local.
 Nosso AskData vai ajudar quem está aprendendo a executar pipelines de dados com
 Airflow e Docker. Hoje, uma dúvida sobre dependências, tarefas que falham ou containers
 que não ficam prontos exige procurar em várias páginas de documentação. Vamos reunir
-quatro documentos oficiais, exportados em 38 páginas, sobre DAGs, tarefas, ambiente
-Airflow e Docker Compose. O usuário fará perguntas em português e o assistente buscará
+varios documentos oficiais envolvendo diferentes funcionalidades que o Airflow e Docker 
+podem realizar, exportados em 84 páginas, sobre DAGs, tarefas, ambiente Airflow e Docker Compose. 
+O usuário fará perguntas em português e o assistente buscará
 os trechos relevantes antes de responder, mostrando arquivo e página. Isso permite
 conferir de onde veio cada orientação. O escopo é estudo e execução local; a base não
 pretende cobrir toda a engenharia de dados nem orientar produção fora das fontes.
