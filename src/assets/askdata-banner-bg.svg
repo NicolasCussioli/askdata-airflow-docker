@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="460" height="276" viewBox="0 0 460 276" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Fundo escuro em fluxo" clip-path="url(#clip0_0_13)">
+<path id="Vector" d="M460 0H0V276H460V0Z" fill="url(#paint0_linear_0_13)"/>
+<path id="Vector_2" d="M-20 240C120 179 218 318 480 153" stroke="#39B7CB" stroke-opacity="0.28" stroke-width="74"/>
+<path id="Vector_3" d="M-20 260C130 191 290 320 480 150" stroke="#8D6AEF" stroke-opacity="0.22" stroke-width="58"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_13" x1="0" y1="0" x2="243.529" y2="405.882" gradientUnits="userSpaceOnUse">
+<stop stop-color="#12364B"/>
+<stop offset="1" stop-color="#243063"/>
+</linearGradient>
+<clipPath id="clip0_0_13">
+<rect width="460" height="276" fill="white"/>
+</clipPath>
+</defs>
+</svg>

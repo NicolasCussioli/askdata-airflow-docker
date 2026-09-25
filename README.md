@@ -7,7 +7,8 @@ de pipelines com Docker Compose, citando o documento e a página de cada evidên
 chunks (700/100), com embeddings reais do Gemini salvos e auditados no Chroma
 local. O Dia 8 recupera trechos e gera respostas citadas; a avaliação inicial
 de recuperação encontrou páginas esperadas em 4/4 perguntas com gabarito.
-Respostas ainda requerem revisão humana; a interface fica para o Dia 9.
+Respostas ainda requerem revisão humana; a interface Streamlit do Dia 9 está
+implementada em `src/app.py`.
 
 **Para acompanhar a aula pelo celular:** [roteiro do Dia 7](docs/dia-07.md).
 Para a etapa seguinte: [roteiro do Dia 8](docs/dia-08.md).
@@ -108,7 +109,7 @@ por arquivo/página e medir a recuperação antes de avaliar respostas geradas.
 `Pergunta -> embedding -> trechos top-k -> prompt com evidências -> resposta citada`
 
 `src/ingestion.py` implementa o Dia 7 e `src/rag_engine.py` o Dia 8.
-`src/app.py` continua como marcador do Dia 9.
+`src/app.py` implementa a interface Streamlit do Dia 9.
 Para recriar o corpus, instale `tools/requirements.txt` e execute
 `python tools/coletar_documentos.py`. Isso acessa a rede e pode alterar os snapshots.
 
@@ -127,7 +128,7 @@ askdata-airflow-docker/
     ├── __init__.py
     ├── ingestion.py    # Dia 7
     ├── rag_engine.py   # Dia 8
-    └── app.py          # Dia 9
+    └── app.py          # interface Streamlit do Dia 9
 ```
 
 `sources/` preserva os originais, licenças e manifesto dos PDFs; `tools/` contém
@@ -176,6 +177,20 @@ não comprova chamadas à API ou qualidade semântica da busca.
 O [relatório do Chroma](docs/dia-07-auditoria-chroma.json) registra a integridade
 dos 168 chunks após a ingestão real. A reexecução encontrou zero pendências.
 O banco é local: cada colega precisa gerar seu índice na própria máquina.
+
+## Abrir a interface Streamlit
+
+Na raiz do repositório, use o comando do Streamlit para iniciar o servidor e
+abrir a URL local exibida no terminal. Executar `python src/app.py` diretamente
+gera avisos de `missing ScriptRunContext` e não inicia a interface corretamente.
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run src/app.py
+```
+
+Na barra lateral, **Temas da interface** abre um menu com três apresentações:
+Essencial, Evidências e Estudo guiado. A escolha altera a organização visual da
+resposta e preserva o histórico da conversa na sessão atual.
 
 ## Dia 8: buscar e responder
 
