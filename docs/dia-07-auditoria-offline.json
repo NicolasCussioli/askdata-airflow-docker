@@ -1,0 +1,231 @@
+{
+  "modo": "preview_offline",
+  "api_testada_nesta_auditoria": false,
+  "erros": [],
+  "chunk_size": 700,
+  "chunk_overlap": 100,
+  "aprovado": true,
+  "total_chunks": 168,
+  "menor": 102,
+  "maior": 700,
+  "media": 624.27,
+  "chunks_sem_pontuacao_final": 147,
+  "por_arquivo": {
+    "01-airflow-docker.pdf": 34,
+    "02-airflow-dags.pdf": 74,
+    "03-airflow-tasks.pdf": 31,
+    "04-docker-compose.pdf": 29
+  },
+  "por_pagina": [
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 1,
+      "chunks": 5
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 2,
+      "chunks": 4
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 3,
+      "chunks": 5
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 4,
+      "chunks": 4
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 5,
+      "chunks": 6
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 6,
+      "chunks": 5
+    },
+    {
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 7,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 1,
+      "chunks": 4
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 2,
+      "chunks": 4
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 3,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 4,
+      "chunks": 6
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 5,
+      "chunks": 4
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 6,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 7,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 8,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 9,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 10,
+      "chunks": 4
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 11,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 12,
+      "chunks": 4
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 13,
+      "chunks": 6
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 14,
+      "chunks": 6
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 15,
+      "chunks": 5
+    },
+    {
+      "arquivo": "02-airflow-dags.pdf",
+      "pagina": 16,
+      "chunks": 1
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 1,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 2,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 3,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 4,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 5,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 6,
+      "chunks": 5
+    },
+    {
+      "arquivo": "03-airflow-tasks.pdf",
+      "pagina": 7,
+      "chunks": 1
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 1,
+      "chunks": 3
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 2,
+      "chunks": 4
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 3,
+      "chunks": 4
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 4,
+      "chunks": 4
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 5,
+      "chunks": 4
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 6,
+      "chunks": 4
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 7,
+      "chunks": 5
+    },
+    {
+      "arquivo": "04-docker-compose.pdf",
+      "pagina": 8,
+      "chunks": 1
+    }
+  ],
+  "exemplos_para_revisao": [
+    {
+      "id": "01-airflow-docker.pdf_p1_c1",
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 1,
+      "final": "g and exploration. However, adapting it for use in real-world situations\ncan be complicated and the "
+    },
+    {
+      "id": "01-airflow-docker.pdf_p1_c2",
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 1,
+      "final": "ese tools\nbefore, you should take a moment to run through the Docker Quick Start (especially the sec"
+    },
+    {
+      "id": "01-airflow-docker.pdf_p1_c3",
+      "arquivo": "01-airflow-docker.pdf",
+      "pagina": 1,
+      "final": "n your workstation.\nOlder versions of docker-compose do not support all the features required by the"
+    }
+  ]
+}

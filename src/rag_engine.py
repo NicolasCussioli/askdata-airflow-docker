@@ -150,6 +150,8 @@ class RAGEngine:
             resposta = (response.text or '').strip()
         except errors.APIError as exc:
             codigo = exc.code if isinstance(exc.code, int) else 'indisponível'
+            if codigo == 503:
+                raise RuntimeError('Geração: serviço Gemini temporariamente indisponível (HTTP 503). Tente novamente em instantes.') from None
             raise RuntimeError(f'Geração: API HTTP {codigo}. Confira modelo, cota e rede.') from None
         except Exception:
             raise RuntimeError('Falha ao gerar a resposta. Confira modelo, cota e rede.') from None
