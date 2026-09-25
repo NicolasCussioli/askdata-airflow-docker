@@ -17,13 +17,13 @@ def validar_documentos(folder):
     from pypdf import PdfReader
     files = sorted(folder.glob('*.pdf'))
     errors, records = [], []
-    if not 3 <= len(files) <= 5:
-        errors.append(f'Esperados 3 a 5 PDFs; encontrados {len(files)}.')
+    if not 11 <= len(files) <= 11:
+        errors.append(f'Esperados 11 PDFs; encontrados {len(files)}.')
     for pdf in files:
         try:
             reader = PdfReader(pdf)
             lengths = [len((page.extract_text() or '').strip()) for page in reader.pages]
-            if not lengths or any(length < 80 for length in lengths):
+            if not lengths or any(length < 100 for length in lengths):
                 errors.append(f'{pdf.name}: pagina sem texto suficiente; revisar PDF/OCR.')
             records.append({'arquivo': pdf.name, 'paginas': len(lengths),
                             'min_caracteres_pagina': min(lengths, default=0),
@@ -31,8 +31,8 @@ def validar_documentos(folder):
         except Exception as exc:
             errors.append(f'{pdf.name}: falha de leitura ({type(exc).__name__}).')
     total = sum(row['paginas'] for row in records)
-    if not 15 <= total <= 60:
-        errors.append(f'Esperadas 15 a 60 paginas; encontradas {total}.')
+    if not 12 <= total <= 84:
+        errors.append(f'Esperadas 84 paginas, paginas; encontradas {total}.')
     return records, errors
 
 
