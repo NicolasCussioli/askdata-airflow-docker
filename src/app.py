@@ -71,6 +71,13 @@ def submit_question(question, top_k):
             "fontes": result["fontes"],
             "latencia": time.perf_counter() - start,
         })
+    except (ValueError, RuntimeError) as exc:
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": f"Não foi possível processar a pergunta: {exc}",
+            "fontes": [],
+            "erro": True,
+        })
     except Exception:
         st.session_state.messages.append({
             "role": "assistant",
